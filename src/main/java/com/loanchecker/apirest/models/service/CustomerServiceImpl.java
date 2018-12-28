@@ -1,4 +1,4 @@
-package com.ronaldarias.apirest.models.service;
+package com.loanchecker.apirest.models.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ronaldarias.apirest.models.dao.CustomerDAO;
-import com.ronaldarias.apirest.models.entity.Customer;
+import com.loanchecker.apirest.models.dao.CustomerDAO;
+import com.loanchecker.apirest.models.entity.Customer;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {

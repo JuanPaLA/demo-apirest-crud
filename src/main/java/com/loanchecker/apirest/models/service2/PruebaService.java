@@ -1,8 +1,8 @@
-package com.ronaldarias.apirest.models.service2;
+package com.loanchecker.apirest.models.service2;
 
 import java.util.List;
 
-import com.ronaldarias.apirest.models.entity2.Prueba;
+import com.loanchecker.apirest.models.entity2.Prueba;
 
 public interface PruebaService {
 	

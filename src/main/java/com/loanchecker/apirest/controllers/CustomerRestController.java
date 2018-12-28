@@ -1,4 +1,4 @@
-package com.ronaldarias.apirest.controllers;
+package com.loanchecker.apirest.controllers;
 
 import java.util.List;
 
@@ -15,11 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ronaldarias.apirest.models.entity.Customer;
-import com.ronaldarias.apirest.models.service.CustomerService;
-
-import com.ronaldarias.apirest.models.entity2.Prueba;
-import com.ronaldarias.apirest.models.service2.PruebaService;
+import com.loanchecker.apirest.models.entity.Customer;
+import com.loanchecker.apirest.models.entity2.Prueba;
+import com.loanchecker.apirest.models.service.CustomerService;
+import com.loanchecker.apirest.models.service2.PruebaService;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController

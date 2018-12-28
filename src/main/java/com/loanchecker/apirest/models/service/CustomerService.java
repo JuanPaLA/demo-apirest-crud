@@ -1,8 +1,8 @@
-package com.ronaldarias.apirest.models.service;
+package com.loanchecker.apirest.models.service;
 
 import java.util.List;
 
-import com.ronaldarias.apirest.models.entity.Customer;
+import com.loanchecker.apirest.models.entity.Customer;
 
 public interface CustomerService {
 	

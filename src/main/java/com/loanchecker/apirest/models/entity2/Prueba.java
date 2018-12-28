@@ -1,4 +1,4 @@
-package com.ronaldarias.apirest.models.entity2;
+package com.loanchecker.apirest.models.entity2;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

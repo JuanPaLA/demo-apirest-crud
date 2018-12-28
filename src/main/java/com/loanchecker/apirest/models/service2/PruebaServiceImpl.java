@@ -1,4 +1,4 @@
-package com.ronaldarias.apirest.models.service2;
+package com.loanchecker.apirest.models.service2;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ronaldarias.apirest.models.dao2.PruebaDAO;
-import com.ronaldarias.apirest.models.entity2.Prueba;
+import com.loanchecker.apirest.models.dao2.PruebaDAO;
+import com.loanchecker.apirest.models.entity2.Prueba;
 
 @Service
 public class PruebaServiceImpl implements PruebaService {
