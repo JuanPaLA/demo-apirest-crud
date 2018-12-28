@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ronaldarias.apirest.models.entity.Customer;
 import com.ronaldarias.apirest.models.service.CustomerService;
 
+import com.ronaldarias.apirest.models.entity2.Prueba;
+import com.ronaldarias.apirest.models.service2.PruebaService;
+
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
@@ -26,12 +29,24 @@ public class CustomerRestController {
 	// injection dependency
 	@Autowired
 	private CustomerService customerService;
+	
+	
+		//injection dependency
+		@Autowired
+		private PruebaService pruebaService;
+	
 
 	@GetMapping("/customers")
 	public List<Customer> getCustomers() {
 		return customerService.getCustomers();
 	}
 
+		@GetMapping("/prueba")
+		public List<Prueba> getPruebas(){
+			return pruebaService.getPruebas();
+		}
+	
+	
 	@GetMapping("/customers/{customerId}")
 	public Customer getCustomer(@PathVariable int customerId) {
 
@@ -40,6 +55,15 @@ public class CustomerRestController {
 		return customer;
 	}
 
+		@GetMapping("/prueba/{pruebaId}")
+		public Prueba getPrueba(@PathVariable int pruebaId) {
+			
+			Prueba p = pruebaService.getPrueba(pruebaId);
+			
+			return p;
+		}
+	
+	
 	// add mapping for POST /customers - add new customer
 
 	@PostMapping("/customers")
