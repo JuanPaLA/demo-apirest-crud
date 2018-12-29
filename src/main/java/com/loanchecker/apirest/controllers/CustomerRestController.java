@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.loanchecker.apirest.models.entity.Customer;
-import com.loanchecker.apirest.models.entity2.Prueba;
-import com.loanchecker.apirest.models.service.CustomerService;
-import com.loanchecker.apirest.models.service2.PruebaService;
+import com.loanchecker.apirest.models.entity.Clientes;
+import com.loanchecker.apirest.models.entity2.Prestamos;
+import com.loanchecker.apirest.models.service.ClientesService;
+import com.loanchecker.apirest.models.service2.PrestamosService;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
@@ -27,37 +27,37 @@ public class CustomerRestController {
 
 	// injection dependency
 	@Autowired
-	private CustomerService customerService;
+	private ClientesService clientesService;
 	
 	
 		//injection dependency
 		@Autowired
-		private PruebaService pruebaService;
+		private PrestamosService prestamosService;
 	
 
-	@GetMapping("/customers")
-	public List<Customer> getCustomers() {
-		return customerService.getCustomers();
+	@GetMapping("/clientes")
+	public List<Clientes> getCustomers() {
+		return clientesService.getCustomers();
 	}
 
-		@GetMapping("/prueba")
-		public List<Prueba> getPruebas(){
-			return pruebaService.getPruebas();
+		@GetMapping("/prestamos")
+		public List<Prestamos> getPruebas(){
+			return prestamosService.getPruebas();
 		}
 	
 	
-	@GetMapping("/customers/{customerId}")
-	public Customer getCustomer(@PathVariable int customerId) {
+	@GetMapping("/clientes/{customerId}")
+	public Clientes getCustomer(@PathVariable int customerId) {
 
-		Customer customer = customerService.getCustomer(customerId);
+		Clientes clientes = clientesService.getCustomer(customerId);
 
-		return customer;
+		return clientes;
 	}
 
-		@GetMapping("/prueba/{pruebaId}")
-		public Prueba getPrueba(@PathVariable int pruebaId) {
+		@GetMapping("/prestamos/{pruebaId}")
+		public Prestamos getPrueba(@PathVariable int pruebaId) {
 			
-			Prueba p = pruebaService.getPrueba(pruebaId);
+			Prestamos p = prestamosService.getPrueba(pruebaId);
 			
 			return p;
 		}
@@ -65,38 +65,61 @@ public class CustomerRestController {
 	
 	// add mapping for POST /customers - add new customer
 
-	@PostMapping("/customers")
+	@PostMapping("/clientes")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Customer addCustomer(@RequestBody Customer customer) {
+	public Clientes addCustomer(@RequestBody Clientes clientes) {
 
 		// also just in case the pass an id in JSON ... set id to 0
 		// this is force a save of new item ... instead of update
 
-		customer.setId(null);
+		clientes.setId(null);
 
-		customerService.saveCustomer(customer);
+		clientesService.saveCustomer(clientes);
 
-		return customer;
+		return clientes;
 	}
+	
+		// add mapping for POST /prestamos - add new prestamo
+		@PostMapping("/prestamos")
+		@ResponseStatus(HttpStatus.CREATED)
+		public Prestamos addPrueba(@RequestBody Prestamos prestamo) {
+		
+			// also just in case the pass an id in JSON ... set id to 0
+			// this is force a save of new item ... instead of update
+		
+			prestamo.setId(null);
+		
+			prestamosService.savePrueba(prestamo);
+		
+			return prestamo;
+		}
 	
 	// add mapping for PUT /customers - update existing customer
 	
-	@PutMapping("/customers")
+	@PutMapping("/clientes")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Customer updateCustomer(@RequestBody Customer customer) {
+	public Clientes updateCustomer(@RequestBody Clientes clientes) {
 		
-		customerService.saveCustomer(customer);
+		clientesService.saveCustomer(clientes);
 		
-		return customer;
+		return clientes;
 	}
 	
 	
 	//add mapping for DELETE /customers/{customerId} - delete existing customer
-	@DeleteMapping("/customers/{customerId}")
+	@DeleteMapping("/clientes/{customerId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteCustomer(@PathVariable int customerId) {
 		
-		customerService.deleteCustomer(customerId);
+		clientesService.deleteCustomer(customerId);
 	}
-
+	
+		//add mapping for DELETE /prestamos/{customerId} - delete existing prestamo
+		@DeleteMapping("/prestamos/{customerId}")
+		@ResponseStatus(HttpStatus.NO_CONTENT)
+		public void deletePrueba(@PathVariable int customerId) {
+			
+			prestamosService.deletePrueba(customerId);
+		}
+	
 }

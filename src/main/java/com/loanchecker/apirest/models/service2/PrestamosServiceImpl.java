@@ -6,41 +6,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.loanchecker.apirest.models.dao2.PruebaDAO;
-import com.loanchecker.apirest.models.entity2.Prueba;
+import com.loanchecker.apirest.models.dao2.PrestamosDAO;
+import com.loanchecker.apirest.models.entity2.Prestamos;
 
 @Service
-public class PruebaServiceImpl implements PruebaService {
+public class PrestamosServiceImpl implements PrestamosService {
 
 	// need to inject prueba DAO
 	@Autowired
-	private PruebaDAO pruebaDAO;
+	private PrestamosDAO prestamosDAO;
 
 	@Override
 	@Transactional(readOnly=true)
-	public List<Prueba> getPruebas() {
-		return (List<Prueba>) pruebaDAO.findAll();
+	public List<Prestamos> getPruebas() {
+		return (List<Prestamos>) prestamosDAO.findAll();
 	}
 
 	@Override
 	@Transactional
-	public void savePrueba(Prueba theCustomer) {
+	public void savePrueba(Prestamos theCustomer) {
 
-		pruebaDAO.save(theCustomer);
+		prestamosDAO.save(theCustomer);
 	}
 
 	@Override
 	@Transactional(readOnly=true)
-	public Prueba getPrueba(Integer theId) {
+	public Prestamos getPrueba(Integer theId) {
 
-		return pruebaDAO.findById(theId).get();
+		return prestamosDAO.findById(theId).get();
 	}
 
 	@Override
 	@Transactional
 	public void deletePrueba(Integer theId) {
 
-		pruebaDAO.deleteById(theId);
+		prestamosDAO.deleteById(theId);
 	}
 
 }

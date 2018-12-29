@@ -6,41 +6,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.loanchecker.apirest.models.dao.CustomerDAO;
-import com.loanchecker.apirest.models.entity.Customer;
+import com.loanchecker.apirest.models.dao.ClientesDAO;
+import com.loanchecker.apirest.models.entity.Clientes;
 
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class ClientesServiceImpl implements ClientesService {
 
 	// need to inject customer DAO
 	@Autowired
-	private CustomerDAO customerDAO;
+	private ClientesDAO clientesDAO;
 
 	@Override
 	@Transactional(readOnly=true)
-	public List<Customer> getCustomers() {
-		return (List<Customer>) customerDAO.findAll();
+	public List<Clientes> getCustomers() {
+		return (List<Clientes>) clientesDAO.findAll();
 	}
 
 	@Override
 	@Transactional
-	public void saveCustomer(Customer theCustomer) {
+	public void saveCustomer(Clientes theCustomer) {
 
-		customerDAO.save(theCustomer);
+		clientesDAO.save(theCustomer);
 	}
 
 	@Override
 	@Transactional(readOnly=true)
-	public Customer getCustomer(Integer theId) {
+	public Clientes getCustomer(Integer theId) {
 
-		return customerDAO.findById(theId).get();
+		return clientesDAO.findById(theId).get();
 	}
 
 	@Override
 	@Transactional
 	public void deleteCustomer(Integer theId) {
 
-		customerDAO.deleteById(theId);
+		clientesDAO.deleteById(theId);
 	}
 
 }
