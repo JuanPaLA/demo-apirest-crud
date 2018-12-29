@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.loanchecker.apirest.models.entity.Clientes;
 import com.loanchecker.apirest.models.entity2.Prestamos;
+import com.loanchecker.apirest.models.entity3.Cobros;
 import com.loanchecker.apirest.models.service.ClientesService;
 import com.loanchecker.apirest.models.service2.PrestamosService;
+import com.loanchecker.apirest.models.service3.CobrosService;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
@@ -34,6 +36,9 @@ public class CustomerRestController {
 		@Autowired
 		private PrestamosService prestamosService;
 	
+			//injection dependency
+			@Autowired
+			private CobrosService cobroService;
 
 	@GetMapping("/clientes")
 	public List<Clientes> getCustomers() {
@@ -45,7 +50,12 @@ public class CustomerRestController {
 			return prestamosService.getPruebas();
 		}
 	
-	
+			@GetMapping("/cobros")
+			public List<Cobros> getCobros(){
+				return cobroService.getCobros();
+			}
+			
+		
 	@GetMapping("/clientes/{customerId}")
 	public Clientes getCustomer(@PathVariable int customerId) {
 
