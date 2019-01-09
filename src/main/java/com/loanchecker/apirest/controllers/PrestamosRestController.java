@@ -32,7 +32,7 @@ public class PrestamosRestController {
 		return prestamosService.getPrestamos();
 	}
 	
-	@GetMapping("/prestamos/{pruebaId}")
+	@GetMapping("/{pruebaId}")
 	public Prestamos getPrestamo(@PathVariable int pruebaId) {
 		
 		Prestamos p = prestamosService.getPrestamo(pruebaId);
@@ -40,7 +40,7 @@ public class PrestamosRestController {
 		return p;
 	}
 	
-	@PostMapping("/prestamos")
+	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Prestamos addPrestamo(@RequestBody Prestamos prestamo) {
 	
@@ -55,7 +55,7 @@ public class PrestamosRestController {
 	}
 	
 	//add mapping for DELETE /prestamos/{customerId} - delete existing prestamo
-	@DeleteMapping("/prestamos/{customerId}")
+	@DeleteMapping("/{customerId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deletePrestamo(@PathVariable int customerId) {
 		
