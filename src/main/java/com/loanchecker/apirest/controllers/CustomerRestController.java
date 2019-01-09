@@ -22,7 +22,7 @@ import com.loanchecker.apirest.models.service.ClientesService;
 import com.loanchecker.apirest.models.service2.PrestamosService;
 import com.loanchecker.apirest.models.service3.CobrosService;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class CustomerRestController {
@@ -31,30 +31,38 @@ public class CustomerRestController {
 	@Autowired
 	private ClientesService clientesService;
 	
-	
+		/*
 		//injection dependency
 		@Autowired
 		private PrestamosService prestamosService;
-	
+	*/
 			//injection dependency
 			@Autowired
 			private CobrosService cobroService;
+			
+	// MAPPING - GET - CLIENTES
 
 	@GetMapping("/clientes")
 	public List<Clientes> getCustomers() {
 		return clientesService.getCustomers();
 	}
-
-		@GetMapping("/prestamos")
-		public List<Prestamos> getPruebas(){
-			return prestamosService.getPruebas();
-		}
+		
+		// MAPPING - GET - PRESTAMOS
 	
+//		@GetMapping("/prestamos")
+//		public List<Prestamos> getPrestamos(){
+//			return prestamosService.getPrestamos();
+//		}
+			
+		// MAPPING - GET - COBROS
+			
 			@GetMapping("/cobros")
 			public List<Cobros> getCobros(){
 				return cobroService.getCobros();
 			}
 			
+	
+			// MAPPING - GET by ID - CLIENTES 
 		
 	@GetMapping("/clientes/{customerId}")
 	public Clientes getCustomer(@PathVariable int customerId) {
@@ -64,16 +72,27 @@ public class CustomerRestController {
 		return clientes;
 	}
 
-		@GetMapping("/prestamos/{pruebaId}")
-		public Prestamos getPrueba(@PathVariable int pruebaId) {
+	// MAPPING - GET by ID - PRESTAMOS
+		
+//		@GetMapping("/prestamos/{pruebaId}")
+//		public Prestamos getPrestamo(@PathVariable int pruebaId) {
+//			
+//			Prestamos p = prestamosService.getPrestamo(pruebaId);
+//			
+//			return p;
+//		}
+//		
+		@GetMapping("/cobros/{cobroId}")
+		public Cobros getCobro(@PathVariable int cobroId) {
 			
-			Prestamos p = prestamosService.getPrueba(pruebaId);
+			Cobros c = cobroService.getCobro(cobroId);
 			
-			return p;
+			return c;
 		}
 	
 	
-	// add mapping for POST /customers - add new customer
+	// MAPPING FOR POST
+	//------CLIENTES----------
 
 	@PostMapping("/clientes")
 	@ResponseStatus(HttpStatus.CREATED)
@@ -89,21 +108,20 @@ public class CustomerRestController {
 		return clientes;
 	}
 	
-		// add mapping for POST /prestamos - add new prestamo
-		@PostMapping("/prestamos")
-		@ResponseStatus(HttpStatus.CREATED)
-		public Prestamos addPrueba(@RequestBody Prestamos prestamo) {
-		
-			// also just in case the pass an id in JSON ... set id to 0
-			// this is force a save of new item ... instead of update
-		
-			prestamo.setId(null);
-		
-			prestamosService.savePrueba(prestamo);
-		
-			return prestamo;
-		}
-	
+//		@PostMapping("/prestamos")
+//		@ResponseStatus(HttpStatus.CREATED)
+//		public Prestamos addPrestamo(@RequestBody Prestamos prestamo) {
+//		
+//			// also just in case the pass an id in JSON ... set id to 0
+//			// this is force a save of new item ... instead of update
+//		
+//			prestamo.setId(null);
+//		
+//			prestamosService.savePrestamo(prestamo);
+//		
+//			return prestamo;
+//		}
+//	
 	// add mapping for PUT /customers - update existing customer
 	
 	@PutMapping("/clientes")
@@ -123,13 +141,13 @@ public class CustomerRestController {
 		
 		clientesService.deleteCustomer(customerId);
 	}
-	
-		//add mapping for DELETE /prestamos/{customerId} - delete existing prestamo
-		@DeleteMapping("/prestamos/{customerId}")
-		@ResponseStatus(HttpStatus.NO_CONTENT)
-		public void deletePrueba(@PathVariable int customerId) {
-			
-			prestamosService.deletePrueba(customerId);
-		}
+//	
+//		//add mapping for DELETE /prestamos/{customerId} - delete existing prestamo
+//		@DeleteMapping("/prestamos/{customerId}")
+//		@ResponseStatus(HttpStatus.NO_CONTENT)
+//		public void deletePrestamo(@PathVariable int customerId) {
+//			
+//			prestamosService.deletePrestamo(customerId);
+//		}
 	
 }

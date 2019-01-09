@@ -6,12 +6,12 @@ import com.loanchecker.apirest.models.entity2.Prestamos;
 
 public interface PrestamosService {
 	
-	public List<Prestamos> getPruebas();
+	public List<Prestamos> getPrestamos();
 
-	public void savePrueba(Prestamos theCustomer);
+	public void savePrestamo(Prestamos theCustomer);
 
-	public Prestamos getPrueba(Integer theId);
+	public Prestamos getPrestamo(Integer theId);
 
-	public void deletePrueba(Integer theId);
+	public void deletePrestamo(Integer theId);
 
 }

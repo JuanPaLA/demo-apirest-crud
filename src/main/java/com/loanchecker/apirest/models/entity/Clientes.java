@@ -31,6 +31,7 @@ public class Clientes {
 	@Column(name="dni")
 	private int dni;
 	
+	/*
 	@Column(name="telfijo")
 	private String telFijo;
 	
@@ -39,7 +40,7 @@ public class Clientes {
 	
 	@Column(name="domsec")
 	private String domicilioSecundario;
-	
+	*/
 	@Column(name="barrio")
 	private String barrio;
 	
@@ -95,7 +96,7 @@ public class Clientes {
 	public void setDni(int dni) {
 		this.dni = dni;
 	}
-
+/*
 	public String getTelFijo() {
 		return telFijo;
 	}
@@ -119,6 +120,7 @@ public class Clientes {
 	public void setDomicilioSecundario(String domicilioSecundario) {
 		this.domicilioSecundario = domicilioSecundario;
 	}
+	*/
 
 	public String getBarrio() {
 		return barrio;
@@ -128,11 +130,5 @@ public class Clientes {
 		this.barrio = barrio;
 	}
 
-	@Override
-	public String toString() {
-		return "Customer [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", celular="
-				+ celular + ", dni=" + dni + ", telFijo=" + telFijo + ", domicilioCobro=" + domCobro
-				+ ", domicilioSecundario=" + domicilioSecundario + ", barrio=" + barrio + "]";
-	}
 
 }

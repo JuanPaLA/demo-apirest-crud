@@ -18,29 +18,29 @@ public class PrestamosServiceImpl implements PrestamosService {
 
 	@Override
 	@Transactional(readOnly=true)
-	public List<Prestamos> getPruebas() {
+	public List<Prestamos> getPrestamos() {
 		return (List<Prestamos>) prestamosDAO.findAll();
 	}
 
 	@Override
 	@Transactional
-	public void savePrueba(Prestamos theCustomer) {
+	public void savePrestamo(Prestamos p) {
 
-		prestamosDAO.save(theCustomer);
+		prestamosDAO.save(p);
 	}
 
 	@Override
 	@Transactional(readOnly=true)
-	public Prestamos getPrueba(Integer theId) {
+	public Prestamos getPrestamo(Integer Id) {
 
-		return prestamosDAO.findById(theId).get();
+		return prestamosDAO.findById(Id).get();
 	}
 
 	@Override
 	@Transactional
-	public void deletePrueba(Integer theId) {
+	public void deletePrestamo(Integer Id) {
 
-		prestamosDAO.deleteById(theId);
+		prestamosDAO.deleteById(Id);
 	}
 
 }
